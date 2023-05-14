@@ -21,12 +21,17 @@ def intercepter(request):
 print("Openning Browser")
 options = webdriver.ChromeOptions()
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
+options.add_experimental_option("prefs", {
+  "translate_whitelists": {"ru":"en"},
+  "translate":{"enabled":"true"}
+})
 driver = webdriver.Chrome(options=options)
 driver.request_interceptor = intercepter
 driver.maximize_window()
 
 print("Starting Web Serfing Jobs")
 driver.get("https://aviso.bz/work-serf")
+driver.execute_script("[...document.querySelectorAll('.work-serf')].forEach(function(item){item.style.display='table'})")
 all_work_serf = driver.find_elements(By.CSS_SELECTOR, ".work-serf")
 print(f"Found {len(all_work_serf)} Web Surfing Jobs")
 for work_serf in all_work_serf:
