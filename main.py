@@ -44,7 +44,6 @@ for work_serf in all_work_serf:
     find_until_clicklable(work_serf, By.CSS_SELECTOR, "a.start-yes-serf").click()
     break
 
-
-sleep(10)
+sleep(100)
 
 # driver.close()
