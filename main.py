@@ -5,6 +5,7 @@ from time import sleep
 
 email = "mariamkhanam1979@gmail.com"
 password = "mariam@1"
+cookie = "_ym_uid=1683481656190358898; _ym_d=1683481656; _vid_t=fVmAOhgv8IpjJI6Ztk8Pf5Sjr4XJxtgj8OOM4h1o4oKeRHddKZiWohtU+wrkrQSxyWXhJZlDmWbIfw==; mnu_title4=1; PHPSESSID=dsm4s279tgrk6cnerufl30orju; menu_ref=4b4743cf320d1fb0de8deb97d10ecab5; _ym_isad=2; cenrifugo_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyMDEwMjc3IiwiZXhwIjoxNjg0MDYzMTc2fQ.t4x1ULkhPFNzpZp-EXuljiVDRuutlWTA2MT3x_3vlro; cenrifugo_token_exp=1684063176; googtrans=null; googtrans=null"
 
 d=print
 def print(*a, **kw):
