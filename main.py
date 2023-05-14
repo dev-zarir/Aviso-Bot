@@ -35,8 +35,16 @@ driver.execute_script("[...document.querySelectorAll('.work-serf')].forEach(func
 all_work_serf = driver.find_elements(By.CSS_SELECTOR, ".work-serf")
 print(f"Found {len(all_work_serf)} Web Surfing Jobs")
 for work_serf in all_work_serf:
+    driver.execute_script("arguments[0].scrollIntoView();", work_serf)
+    driver.implicitly_wait(5)
     time_to_stay = int(work_serf.find_element(By.CSS_SELECTOR, 'div[style="margin-top:5px;"] .serf-text').text.split(" ")[0])
     cost_to_visit = float(work_serf.find_element(By.CSS_SELECTOR, 'span[title="Стоимость просмотра"]').text.split(" ")[0].split("o")[0])
-    print(f"Time: {time_to_stay} sec | Cost: {cost_to_visit}")
+    print(f"Doing Job... [Time: {time_to_stay} sec | Cost: {cost_to_visit}]")
+    find_until_clicklable(work_serf, By.CSS_SELECTOR, "a").click()
+    find_until_clicklable(work_serf, By.CSS_SELECTOR, "a.start-yes-serf").click()
+    break
 
-driver.close()
+
+sleep(10)
+
+# driver.close()
