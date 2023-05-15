@@ -39,11 +39,20 @@ for work_serf in all_work_serf:
     driver.implicitly_wait(5)
     time_to_stay = int(work_serf.find_element(By.CSS_SELECTOR, 'div[style="margin-top:5px;"] .serf-text').text.split(" ")[0])
     cost_to_visit = float(work_serf.find_element(By.CSS_SELECTOR, 'span[title="Стоимость просмотра"]').text.split(" ")[0].split("o")[0])
-    print(f"Doing Job... [Time: {time_to_stay} sec | Cost: {cost_to_visit}]")
+    print(f"Doing Job... [Time: {time_to_stay} sec | Cost: {cost_to_visit} rub]")
     find_until_clicklable(work_serf, By.CSS_SELECTOR, "a").click()
     find_until_clicklable(work_serf, By.CSS_SELECTOR, "a.start-yes-serf").click()
-    break
+    sleep(5)
+    driver.switch_to.window(driver.window_handles[1])
+    driver.switch_to.frame(driver.find_element(By.NAME, "frminfo"))
+    find_until_clicklable(driver, By.CSS_SELECTOR, ".btn_capt", time_to_stay + 30).click()
+    driver.switch_to.default_content()
+    for i, tabs in enumerate(driver.window_handles):
+        if i != 0:
+            driver.switch_to.window(driver.window_handles[i])
+            driver.close()
+    driver.switch_to.window(driver.window_handles[0])
 
-sleep(100)
+sleep(10)
 
 # driver.close()
