@@ -1,6 +1,6 @@
 @echo off
-git config --global user.email "dummy@git.org"
-git config --global user.name "John Dummy"
+git config --global user.email "shahriarzariracc@gmail.com"
+git config --global user.name "dev-zarir"
 git add .
 git commit -am "Update"
 git push origin main
