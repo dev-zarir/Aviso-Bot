@@ -68,6 +68,7 @@ for work_serf in all_work_serf:
     find_until_clicklable(work_serf, By.CSS_SELECTOR, "span.go-link-youtube").click()
     sleep(5)
     driver.switch_to.window(driver.window_handles[1])
+    driver.execute_script('document.querySelector(\'button[aria-label="Play"]\').click()')
 
 
 driver.implicitly_wait(100)
