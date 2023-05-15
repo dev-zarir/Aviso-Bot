@@ -70,7 +70,7 @@ for work_serf in all_work_serf:
     driver.switch_to.window(driver.window_handles[1])
     driver.switch_to.frame(driver.find_element(By.ID, "video-start"))
     find_until_clicklable(driver, By.CSS_SELECTOR, 'button[aria-label="Play"]').click()
-    sleep(30)
+    sleep(50)
     driver.switch_to.default_content()
     break
 
