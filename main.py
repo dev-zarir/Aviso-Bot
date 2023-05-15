@@ -28,7 +28,7 @@ options.add_experimental_option("prefs", {
 driver = webdriver.Chrome(options=options)
 driver.request_interceptor = intercepter
 driver.maximize_window()
-
+'''
 print("Starting Web Serfing Jobs")
 driver.get("https://aviso.bz/work-serf")
 driver.execute_script("[...document.querySelectorAll('.work-serf')].forEach(function(item){item.style.display='table'})")
@@ -52,7 +52,23 @@ for work_serf in all_work_serf:
             driver.switch_to.window(driver.window_handles[i])
             driver.close()
     driver.switch_to.window(driver.window_handles[0])
+'''
+print("Starting Youtube Watching Jobs")
+driver.get("https://aviso.bz/work-youtube")
+driver.execute_script("[...document.querySelectorAll('.work-serf')].forEach(function(item){item.style.display='table'})")
+all_work_serf = driver.find_elements(By.CSS_SELECTOR, ".work-serf")
+print(f"Found {len(all_work_serf)} Youtube Jobs")
+for work_serf in all_work_serf:
+    driver.execute_script("arguments[0].scrollIntoView();", work_serf)
+    driver.implicitly_wait(5)
+    time_to_stay = int(work_serf.find_element(By.CSS_SELECTOR, 'div[style="margin-top:5px;"] .serf-text').text.split(" ")[0])
+    cost_to_visit = float(work_serf.find_element(By.CSS_SELECTOR, 'span[title="Стоимость просмотра"]').text.split(" ")[0].split("o")[0])
+    print(f"Doing Job... [Time: {time_to_stay} sec | Cost: {cost_to_visit} rub]")
+    find_until_clicklable(work_serf, By.CSS_SELECTOR, "span").click()
+    find_until_clicklable(work_serf, By.CSS_SELECTOR, "span.go-link-youtube").click()
+    sleep(5)
+    driver.switch_to.window(driver.window_handles[1])
 
-sleep(10)
 
+driver.implicitly_wait(100)
 # driver.close()
