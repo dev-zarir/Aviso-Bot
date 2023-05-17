@@ -84,9 +84,10 @@ def do_jobs(cookie):
 
     sleep(10)
     driver.close()
+    
+while 1:
+    for ck in acc:
+        print("Doing Jobs On a Account")
+        do_jobs(ck)
 
-for ck in acc:
-    print("Doing Jobs On a Account")
-    do_jobs(ck)
-
-print("All Done")
+    print("All Done")
